@@ -83,10 +83,10 @@ function makeRecipe(coffee, totalWater, options = {}) {
 
 app.post('/calc', (req, res) => {
   try {
-    const { type, value, ratio, pours, bloomRatio, bloomTime } = req.body || {};
+    const { type, value, ratio, pours, bloomRatio, bloomTime, pourInterval } = req.body || {};
     const base = computeCoffeeWater(type, value, ratio);
 
-    const recipe = makeRecipe(base.coffee, base.water, { pours, bloomRatio, bloomTime });
+    const recipe = makeRecipe(base.coffee, base.water, { pours, bloomRatio, bloomTime, pourInterval });
 
     res.json({ ...base, recipe });
   } catch (err) {
@@ -98,9 +98,9 @@ app.post('/calc', (req, res) => {
 // Example: /calc?type=coffee&value=15&ratio=16
 app.get('/calc', (req, res) => {
   try {
-    const { type, value, ratio, pours, bloomRatio, bloomTime } = req.query || {};
+    const { type, value, ratio, pours, bloomRatio, bloomTime, pourInterval } = req.query || {};
     const base = computeCoffeeWater(type, value, ratio);
-    const recipe = makeRecipe(base.coffee, base.water, { pours, bloomRatio, bloomTime });
+    const recipe = makeRecipe(base.coffee, base.water, { pours, bloomRatio, bloomTime, pourInterval });
     res.json({ ...base, recipe });
   } catch (err) {
     res.status(400).json({ error: err.message });
