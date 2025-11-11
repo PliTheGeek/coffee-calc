@@ -8,3 +8,22 @@ input[type=number], select{ flex:1; padding:8px; border:1px solid #ddd; border-r
 button{ padding:10px 14px; border:none; background:#0078d4; color:#fff; border-radius:6px }
 .hidden{ display:none }
 .note{ font-size:0.9rem; color:#555 }
+
+.recipe-list{ padding-left:1.1rem }
+.recipe-list li{ padding:6px 8px; border-radius:6px }
+.recipe-list li.active{ background:linear-gradient(90deg, #fff8e1, #fff3d6); border:1px solid #ffd166 }
+
+.controls{ display:flex; gap:8px; align-items:center; margin-top:12px }
+.controls button{ 
+	padding:8px 14px; 
+	border-radius:6px; 
+	border:1px solid #ccc; 
+	background:#0078d4; 
+	color:#fff; 
+	min-width:72px;
+	height:36px;
+	cursor:pointer;
+	font-weight:600;
+}
+.controls button:disabled{ opacity:0.6; cursor:default }
+.controls #timerDisplay{ margin-left:8px; font-weight:600 }
