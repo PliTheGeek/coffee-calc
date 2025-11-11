@@ -110,4 +110,9 @@ app.get('/calc', (req, res) => {
 app.get('/', (req, res) => res.send('Coffee Calculator API (POST /calc)'));
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Coffee API listening on port ${port}`));
+if (require.main === module) {
+  app.listen(port, () => console.log(`Coffee API listening on port ${port}`));
+}
+
+// Export helpers and app for testing / reuse
+module.exports = { app, computeCoffeeWater, makeRecipe };
