@@ -49,5 +49,6 @@ jobs:
           script: |
             # Minimal test commands as requested: go up one directory and list files
             sudo su
+            cd Pli/app-project
             ls
   
