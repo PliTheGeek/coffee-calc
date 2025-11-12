@@ -1,0 +1,15 @@
+name: CD - Docker image (disabled)
+
+# This workflow was previously used to build and push a Docker image automatically.
+# It has been disabled from running on push. To re-enable, update the `on:` trigger
+# and restore the build/push/deploy steps.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disabled
+        run: echo "CD workflow is currently disabled. Use workflow_dispatch to run manually."

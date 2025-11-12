@@ -11,10 +11,10 @@ const res2 = computeCoffeeWater('water', 320, 16);
 assert.strictEqual(Math.round(res2.coffee * 100) / 100, 20);
 
 // Test recipe generation with pourInterval
-const recipe = makeRecipe(15, 240, { pours: 3, bloomRatio: 2, bloomTime: 30, pourInterval: 10 });
+const recipe = makeRecipe(5, 80, { pours: 3, bloomRatio: 2, bloomTime: 30, pourInterval: 10 });
 // bloom
 assert.strictEqual(recipe[0].step, 0);
-assert.strictEqual(recipe[0].water, 30);
+assert.strictEqual(recipe[0].water, 10);
 // first pour starts at bloomTime
 assert.strictEqual(recipe[1].startSec, 30);
 // second pour should start at bloomTime + pourInterval
