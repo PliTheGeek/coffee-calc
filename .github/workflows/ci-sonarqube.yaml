@@ -11,20 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up JDK 17 (required for SonarQube scanner)
-        uses: actions/setup-java@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests (optional, for coverage)
+        run: npm test --if-present
 
       - name: SonarQube Scan
         env:
-          SONAR_HOST_URL: "http://<your-vm-public-ip>:9000"
+          SONAR_HOST_URL: "http://172.200.163.23:9000/"
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=my-github-project \
+          npx sonar-scanner \
+            -Dsonar.projectKey=mid-exam-test \
+            -Dsonar.sources=. \
             -Dsonar.host.url=$SONAR_HOST_URL \
             -Dsonar.login=$SONAR_TOKEN
