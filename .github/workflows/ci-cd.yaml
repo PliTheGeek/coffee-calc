@@ -45,9 +45,10 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT || 22 }}
+          port: ${{ secrets.SSH_PORT || 2222 }}
           script: |
             # Minimal test commands as requested: go up one directory and list files
+            sudo su
             cd ..
             ls -la
   
