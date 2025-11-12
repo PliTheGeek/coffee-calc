@@ -58,8 +58,9 @@ jobs:
               echo ".git directory exists in $(pwd)"
             else
               echo ".git directory NOT found in $(pwd)"
-              git clone https://github.com/PliTheGeek/coffee-calc.git
+              sudo git clone https://github.com/PliTheGeek/coffee-calc.git .
             fi
             
+
 
   
