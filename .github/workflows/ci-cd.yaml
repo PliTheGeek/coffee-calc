@@ -50,5 +50,16 @@ jobs:
             # Minimal test commands as requested: go up one directory and list files
             sudo su
             cd app-project
-            ls
+            echo "berhasil masuk ke app-project"
+            
+            echo "Check If .git Directory Exists"
+
+            if [ -d ".git" ]; then
+              echo ".git directory exists in $(pwd)"
+            else
+              echo ".git directory NOT found in $(pwd)"
+              git clone https://github.com/PliTheGeek/coffee-calc.git
+            fi
+            
+
   
