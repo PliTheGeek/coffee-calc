@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -20,14 +22,17 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
+        working-directory: api
         run: npm ci
 
-      - name: Run tests (optional, for coverage)
+      - name: Run tests (optional)
+        working-directory: api
         run: npm test --if-present
 
       - name: SonarQube Scan
+        working-directory: api
         env:
-          SONAR_HOST_URL: "http://172.200.163.23:9000/"
+          SONAR_HOST_URL: "http://172.200.163.23:9000"
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           npx sonar-scanner \
